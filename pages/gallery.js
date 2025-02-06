@@ -72,7 +72,7 @@ export function Gallery() {
                     if (index % 2 == 1) {
                         return
                     }
-                    return <img key={index} className="rounded-lg" src={image_api+(images-1-index)} onClick={() => window.location="/images?image="+(images-1-index)} alt="" loading="lazy" onError={() => this.remove()}/>
+                    return <img id={"image_"+(images-1-index)} key={index} className="rounded-lg" src={image_api+(images-1-index)} onClick={() => window.location="/images?image="+(images-1-index)} alt="" loading="lazy" onError={() => document.getElementById("image_"+(images-1-index)).remove()}/>
                 })}
             </div>
             <div className="column">
@@ -80,7 +80,7 @@ export function Gallery() {
                     if (index % 2 == 0) {
                         return
                     }
-                    return <img key={index} className="rounded-lg" src={image_api+(images-1-index)} onClick={() => window.location="/images?image="+(images-1-index)} alt="" loading="lazy" onError={() => this.remove()}/>
+                    return <img id={"image_"+(images-1-index)} key={index} className="rounded-lg" src={image_api+(images-1-index)} onClick={() => window.location="/images?image="+(images-1-index)} alt="" loading="lazy" onError={() => document.getElementById("image_"+(images-1-index)).remove()}/>
                 })}
             </div>
         </div>
