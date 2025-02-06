@@ -2,7 +2,7 @@ import flask, litedb
 from flask import Flask, request
 from threading import Lock
 import json, hashlib
-import base64
+import base64, s3
 
 count=litedb.get_conn("count")
 count_lock=Lock()
@@ -31,7 +31,8 @@ def upload_images():
             last_count=image_id
             uploaded_images.set(image_hash, image_id)
             count_lock.acquire()
-            open("images/"+str(image_id), "w").write(x)
+            open("images/"+str(image_id), "wb").write(base64.b64decode(x.split(",", 1)[1].encode()))
+            s3.file_uploader("images/"+str(image_id), str(image_id))
             count.set("count", count.get("count")+1)
             count_lock.release()
         elif any_new_images_upload==False:

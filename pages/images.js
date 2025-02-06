@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { ChevronLeft, ChevronRight, Share } from "lucide-react"
 import { ShimmerButton } from "@/components/shimmer-button"
 
-var api="https://aludayalu.com/get_image"
+var api="https://dpsfarewell.s3.ap-south-1.amazonaws.com/"
 
 export default function Images() {
     const router=useRouter()
@@ -16,7 +16,7 @@ export default function Images() {
                 return
             }
             try {
-                fetch(api+"?image="+router.query.image).then(async (x) => {
+                fetch(api+router.query.image).then(async (x) => {
                     setImage(await x.text())
                 })
                 .catch(() =>  {

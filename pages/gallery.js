@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { ShimmerButton } from "@/components/shimmer-button"
 
 var api="https://aludayalu.com/image_count"
-var image_api="https://aludayalu.com/render_image"
+var image_api="https://dpsfarewell.s3.ap-south-1.amazonaws.com/"
 
 export function AnimatedShinyTextDemo() {
     return (
@@ -66,21 +66,21 @@ export function Gallery() {
             </div>
         </div>
         :
-        <div class="row"> 
-            <div class="column">
+        <div className="row"> 
+            <div className="column">
                 {Array(images).fill(1).map((_, index) => {
                     if (index % 2 == 1) {
                         return
                     }
-                    return <img key={index} className="rounded-lg" src={image_api+"?image="+(images-1-index)} onClick={() => window.location="/images?image="+(images-1-index)} alt="" loading="lazy" onError="this.remove()"/>
+                    return <img key={index} className="rounded-lg" src={image_api+(images-1-index)} onClick={() => window.location="/images?image="+(images-1-index)} alt="" loading="lazy" onError={() => this.remove()}/>
                 })}
             </div>
-            <div class="column">
+            <div className="column">
                 {Array(images).fill(1).map((_, index) => {
                     if (index % 2 == 0) {
                         return
                     }
-                    return <img key={index} className="rounded-lg" src={image_api+"?image="+(images-1-index)} onClick={() => window.location="/images?image="+(images-1-index)} alt="" loading="lazy" onError="this.remove()"/>
+                    return <img key={index} className="rounded-lg" src={image_api+(images-1-index)} onClick={() => window.location="/images?image="+(images-1-index)} alt="" loading="lazy" onError={() => this.remove()}/>
                 })}
             </div>
         </div>
