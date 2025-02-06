@@ -89,7 +89,9 @@ const Modal = ({ isOpen, onClose }) => {
       alert("Please select some images.");
       return;
     }
-    var base64Promises = selectedImages.map((image) => {
+    var base64Promises = selectedImages
+    .filter((image) => image.type.startsWith("image/"))
+    .map((image) => {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(image);
