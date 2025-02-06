@@ -16,12 +16,7 @@ export default function Images() {
                 return
             }
             try {
-                fetch(api+router.query.image).then(async (x) => {
-                    setImage(await x.text())
-                })
-                .catch(() =>  {
-                    window.location="images?image="+(Number(router.query.image)-1)
-                })
+                setImage(api+router.query.image)
             } catch {
                 window.location="images?image="+(Number(router.query.image)-1)
             }
