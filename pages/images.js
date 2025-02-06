@@ -44,7 +44,7 @@ export default function Images() {
                     <span className="sr-only">Loading...</span>
                 </div>
                 :
-                <img src={image} style={{height:"70vh"}}></img>
+                <img id="image" src={image} style={{height:"70vh"}} onError={() => {document.getElementById("image").src="https://www.shutterstock.com/image-vector/content-removed-vector-banner-ribbon-600nw-2548784843.jpg"}}></img>
             }
         </div>
         <div style={{height:"10vh", color:"white", borderTopLeftRadius:"25px", borderTopRightRadius:"25px", paddingLeft:"5vw", paddingRight:"5vw"}} className="flex justify-center items-center">
