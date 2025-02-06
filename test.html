@@ -1,0 +1,23 @@
+<div className="image-uploader">
+    <h2>Upload Multiple Images</h2>
+    <input
+      type="file"
+      accept="image/*"
+      multiple
+      onChange={handleFileChange}
+      style={{ marginBottom: "10px" }}
+    />
+    <div>
+      {selectedImages.length > 0 && (
+        <div>
+          <h4>Selected Images:</h4>
+          <ul>
+            {selectedImages.map((image, index) => (
+              <li key={index}>{image.name}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+    <button onClick={handleSubmit}>Upload</button>
+  </div>
