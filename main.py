@@ -3,6 +3,7 @@ from flask import Flask, request
 from threading import Lock
 import json, hashlib
 import base64, s3
+import keys
 
 count=litedb.get_conn("count")
 count_lock=Lock()
@@ -65,5 +66,14 @@ def render_image():
     response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add("Access-Control-Allow-Headers", "*")
     return response
+
+@app.get("/delete_image")
+def delete_image():
+    if request.args["password"]==keys.PASSWORD:
+        s3.file_deleter(request.args["id"])
+        response=Flask.response_class("true")
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "*")
+        return response
 
 app.run(host="127.0.0.1", port=5000)
