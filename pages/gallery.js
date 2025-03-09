@@ -44,7 +44,7 @@ const Header = () =>  {
 }
 
 export function Gallery() {
-    const [images, setImages] = useState(false)
+    const [images, setImages] = useState(400)
 
     useEffect(() => {
         fetch(api).then(async (x) => {
